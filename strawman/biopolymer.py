@@ -1,13 +1,12 @@
-from typing import Optional, Tuple, List, Dict
+from typing import Dict, List, Optional, Tuple
 
 from pydantic import Field
 
-from strawman.molecule import Atom, Bond, GraphMolecule, Molecule, Conformer
+from strawman.molecule import Atom, Bond, Conformer, GraphMolecule, Molecule
 from strawman.utilities.models import ImmutableModel, WrappedModel
 
 
 class Biomonomer(WrappedModel):
-
     class Data(ImmutableModel):
 
         identifier: Optional[str] = Field(
@@ -43,7 +42,8 @@ class GraphBiopolymer(GraphMolecule):
             tuple(), description="The monomers which form the larger biopolymer."
         )
         bonds: Tuple[Bond] = Field(
-            tuple(), description="The bonds between the atoms in the different monomers."
+            tuple(),
+            description="The bonds between the atoms in the different monomers.",
         )
 
     @property
